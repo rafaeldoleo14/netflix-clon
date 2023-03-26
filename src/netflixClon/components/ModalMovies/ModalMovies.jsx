@@ -30,7 +30,7 @@ export const ModalMovies = () => {
                 </div>
 
                 <img src={`https://image.tmdb.org/t/p/original${result?.backdrop_path || result?.poster_path}`} 
-                    className='w-full object-cover img-modal' alt={result?.title} 
+                    className='img-modal' alt={result?.title} 
                 />
 
                 <div className='title-content'>
