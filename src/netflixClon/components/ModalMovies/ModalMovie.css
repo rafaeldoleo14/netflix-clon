@@ -190,7 +190,7 @@
     }
 
     .title-content{
-        height: 10em;
+        height: 6em;
     }
 
     .title-content p{
@@ -222,10 +222,28 @@
     }
 }
 
+@media (max-width:  360px){
+
+    .modal-box{
+        height: 35em;
+    }
+
+    .title-content{
+        height: 5em;
+    }
+}
+
 @media (max-width:  330px){
 
     .modal-box{
         height: 35em;
     }
 
+    .title-content{
+        height: 7em;
+    }
+
+    .info-content div p{
+        font-size: 14px;
+    }
 }

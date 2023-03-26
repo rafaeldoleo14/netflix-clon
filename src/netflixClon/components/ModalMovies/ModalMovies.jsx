@@ -15,8 +15,6 @@ export const ModalMovies = () => {
     const result = getMovieByTitle(idTitle);
     const {hiddenModal, onHiddenModal} = useHiddenModal(idTitle);
     const {onPropagation} = useStopPropagation();
-
-    console.log(result)
     
     return (
     <>
@@ -62,7 +60,11 @@ export const ModalMovies = () => {
 
                     </div>
 
-                    <p className='p-overview'>{result?.overview}</p>
+                    <p className='p-overview'>
+                        {
+                            result?.overview.substring(0,150) + '...'
+                        }
+                    </p>
 
                 </div>
 
