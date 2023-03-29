@@ -12,7 +12,7 @@ export const LoginPage = () => {
   const dispatch = useDispatch();
   const {status, errorMessage} = useSelector(state => state.auth);
 
-  const {formState,email, password} = useForm({
+  const {formState, email, password} = useForm({
     email: '',
     password: ''
   })
