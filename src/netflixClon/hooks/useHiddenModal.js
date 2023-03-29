@@ -23,7 +23,7 @@ export const useHiddenModal = (idTitle) => {
     },[idTitle])
 
     const onHiddenModal = ()=>{
-        navigate('/')
+        navigate(-1)
         setHiddenModal(hiddenModal => !hiddenModal)
     }
 
