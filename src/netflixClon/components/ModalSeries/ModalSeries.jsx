@@ -63,7 +63,7 @@ export const ModalSeries = () => {
 
                     <p className='p-overview'>
                         {
-                            result?.overview.substring(0,150) + '...' || 'Cooming soon'
+                            result?.overview.substring(0,150) + '...' || 'Coming soon'
                         }
                     </p>
 

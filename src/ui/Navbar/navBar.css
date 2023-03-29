@@ -1,7 +1,7 @@
 
 nav{
     z-index: 10001;
-    position: fixed;
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;

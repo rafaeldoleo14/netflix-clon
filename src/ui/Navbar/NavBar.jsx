@@ -25,7 +25,7 @@ export const NavBar = () => {
   return (
     <>
 
-      <nav style={{backgroundColor: `${isFixed ? 'black' : ''}`}}>
+      <nav style={{backgroundColor: `${isFixed ? 'black' : ''}`, position: `${isFixed ? 'fixed' : 'relative'}`}}>
 
         <div className='text-white nav-container'>
 
@@ -68,7 +68,7 @@ export const NavBar = () => {
               <div 
                 className={`
                 panel animate__animated animate__fadeInDown`
-              } style={{display: `${hiddenPanel ? 'flex' : 'none'}`}}>
+              } style={{display: `${hiddenPanel ? 'flex' : 'none'}`, borderRadius: '5px'}}>
 
                   <p onClick={onLogout} className={`cursor-pointer`}>Cerrar sesion de Netflix</p>
 
@@ -107,6 +107,10 @@ export const NavBar = () => {
                 <NavLink className={`${location.pathname === '/series' ? 'text-white' : 'text-gray-400'}`} to={'/series'}>
                   Series
                 </NavLink>
+              </li>
+
+              <li>
+                <p onClick={onLogout} className={`cursor-pointer`}>Cerrar sesion</p>
               </li>
 
           </ul>
