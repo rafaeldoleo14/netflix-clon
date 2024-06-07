@@ -1,0 +1,23 @@
+.search-container {
+  background-color: black;
+  width: 0px;
+  height: 34px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  gap: 10px;
+  transition: all 3s ease;
+}
+
+.search-container input {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.search-container.show {
+  width: 274px;
+  transition: all 3s ease;
+}

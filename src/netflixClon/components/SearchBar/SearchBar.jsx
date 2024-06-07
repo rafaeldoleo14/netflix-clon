@@ -1,34 +1,43 @@
-
-import queryString from 'query-string';
-import React, { useContext, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
-import { SearchContext } from '../../../context/SearchContext/SearchContext';
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../../context/SearchContext/SearchContext";
+import { IoSearch } from "react-icons/io5";
+import { IoCloseSharp } from "react-icons/io5";
+import "./searchBar.css";
 
 export const SearchBar = () => {
+  const { searchInput, setSearchInput } = useContext(SearchContext);
+  const navigate = useNavigate();
+  const [onSearch, setOnSearch] = useState(false);
 
-    const {searchInput, setSearchInput} = useContext(SearchContext);
-    const navigate = useNavigate();
+  const onInput = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
 
-    const onInput = (e)=>{
-        e.preventDefault();
-        setSearchInput(e.target.value);
-        
-        if(e.target.value !== ''){
-          navigate('/search')
-        }
-        else{
-          navigate('/');
-        }
-        
+    if (e.target.value !== "") {
+      navigate("/search");
+    } else {
+      navigate("/");
     }
-    
+  };
+
   return (
     <>
-    
-        <input id='input' onChange={onInput} value={searchInput} 
-        className={`bg-black opacity- p-2 text-white rounded border border-white`} 
-        type="text" placeholder='Buscar'/>
-
+      {!onSearch ? (
+        <IoSearch size={25} onClick={() => setOnSearch(true)} />
+      ) : (
+        <div className={`search-container ${onSearch ? "show" : ""}`}>
+          <IoSearch size={25} />
+          <input
+            id="input"
+            onChange={onInput}
+            value={searchInput}
+            type="text"
+            placeholder="Título"
+          />
+          <IoCloseSharp size={25} onClick={() => setOnSearch(false)} />
+        </div>
+      )}
     </>
-  )
-}
+  );
+};
