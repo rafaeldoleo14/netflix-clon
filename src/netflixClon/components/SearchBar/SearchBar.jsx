@@ -24,20 +24,30 @@ export const SearchBar = () => {
   return (
     <>
       {!onSearch ? (
-        <IoSearch size={25} onClick={() => setOnSearch(true)} />
+        <IoSearch
+          className="icon"
+          size={25}
+          onClick={() => setOnSearch(true)}
+        />
       ) : (
-        <div className={`search-container ${onSearch ? "show" : ""}`}>
-          <IoSearch size={25} />
-          <input
-            id="input"
-            onChange={onInput}
-            value={searchInput}
-            type="text"
-            placeholder="Título"
-          />
-          <IoCloseSharp size={25} onClick={() => setOnSearch(false)} />
-        </div>
+        <div></div>
       )}
+
+      <div className={`search-container ${onSearch ? "show" : ""}`}>
+        <IoSearch size={25} />
+        <input
+          id="input"
+          onChange={onInput}
+          value={searchInput}
+          type="text"
+          placeholder="Buscar"
+        />
+        <IoCloseSharp
+          className="delete-icon"
+          size={25}
+          onClick={() => setOnSearch(false)}
+        />
+      </div>
     </>
   );
 };

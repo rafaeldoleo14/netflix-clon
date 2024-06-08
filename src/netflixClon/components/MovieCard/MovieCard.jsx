@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import imgFound from "../../../assets/img/imgFound.jpg";
 import "./movieCard.css";
@@ -6,14 +6,23 @@ import "./movieCard.css";
 export const MovieCard = ({ info }) => {
   const navigate = useNavigate();
 
+  const [onHover, setOnHover] = useState(false);
+
+  const onMouseAction = (value) => {
+    setOnHover(value);
+  };
+
   return (
     <>
       <div
         style={{
           height: "400px",
+          minWidth: "280px",
         }}
+        className={`card `}
         onClick={() => navigate(`/movie/${info?.title || info?.name}`)}
-        className="w-[280px] sm:w-[280px] md:w-[280px] lg:w-[280px] inline-block cursor-pointer relative p-2 card"
+        onMouseEnter={() => onMouseAction(true)}
+        onMouseLeave={() => onMouseAction(false)}
       >
         <img
           className="w-full h-full block"
@@ -24,12 +33,6 @@ export const MovieCard = ({ info }) => {
           } `}
           alt={info?.title}
         />
-
-        <div className="absolute top-0 left-0 w-full h-full opacity-0  hover:opacity-100 text-white">
-          <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
-            {info?.title || info?.name}
-          </p>
-        </div>
       </div>
     </>
   );

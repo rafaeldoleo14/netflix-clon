@@ -1,0 +1,9 @@
+.row-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+}
+
+.row-container::-webkit-scrollbar {
+  width: 0;
+}

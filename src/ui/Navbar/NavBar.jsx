@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, NavLink } from "react-router-dom";
 import { SearchBar } from "../../netflixClon/components/SearchBar/SearchBar";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { IoMdArrowDropdown } from "react-icons/io";
 import "./navBar.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,16 +8,22 @@ import { startLogout } from "../../store/slices/thunks";
 import { useScroll } from "../../hooks/useScroll";
 import { useHidden } from "../../hooks/useHidden";
 import logo from "../../assets/img/netflix-logo1.png";
+import { IoMenuSharp } from "react-icons/io5";
 
 export const NavBar = () => {
-  const { hidden, onHidden, hiddenPanel, onHiddenPanel } = useHidden();
+  const { hiddenPanel, onHiddenPanel } = useHidden();
   const location = useLocation();
   const dispatch = useDispatch();
-  const { displayName, photoURL } = useSelector((state) => state.auth);
+  const { photoURL } = useSelector((state) => state.auth);
   const { isFixed } = useScroll();
+  const [isShowDashboard, setIsShowDashboard] = useState(false);
 
   const onLogout = () => {
     dispatch(startLogout());
+  };
+
+  const onDashboard = () => {
+    setIsShowDashboard(!isShowDashboard);
   };
 
   return (
@@ -31,12 +36,16 @@ export const NavBar = () => {
       >
         <div className="text-white nav-container">
           <div className="nav-content">
+            <div className="menu-container">
+              <IoMenuSharp onClick={onDashboard} size={35} />
+            </div>
+
             <a href="/" className="text">
               <img src={logo} alt="logo" className="logo" />
             </a>
 
             <NavLink
-              className={`${
+              className={`nav-items ${
                 location.pathname === "/" ? "text-white" : "text-gray-400"
               }`}
               to={"/"}
@@ -45,7 +54,7 @@ export const NavBar = () => {
             </NavLink>
 
             <NavLink
-              className={`${
+              className={`nav-items ${
                 location.pathname === "/series" ? "text-white" : "text-gray-400"
               }`}
               to={"/series"}
@@ -54,10 +63,10 @@ export const NavBar = () => {
             </NavLink>
           </div>
 
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
             <SearchBar />
 
-            <div style={{ display: "flex" }}>
+            <div className="profile-options" style={{ display: "flex" }}>
               <img
                 onClick={onHiddenPanel}
                 src={photoURL}
@@ -80,6 +89,17 @@ export const NavBar = () => {
           </div>
         </div>
       </nav>
+      <div
+        className="dashboard"
+        onClick={onDashboard}
+        style={{ right: isShowDashboard ? "0px" : "1000px" }}
+      >
+        <div
+          className="dashboard-content"
+          onClick={(e) => e.stopPropagation()}
+          style={{ left: isShowDashboard ? "0px" : "-1000px" }}
+        ></div>
+      </div>
     </>
   );
 };
