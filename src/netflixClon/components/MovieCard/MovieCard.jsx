@@ -25,6 +25,7 @@ export const MovieCard = ({ info }) => {
         onMouseLeave={() => onMouseAction(false)}
       >
         <img
+          loading="lazy"
           className="w-full h-full block"
           src={`${
             info.poster_path

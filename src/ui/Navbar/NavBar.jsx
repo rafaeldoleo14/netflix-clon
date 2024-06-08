@@ -89,6 +89,8 @@ export const NavBar = () => {
           </div>
         </div>
       </nav>
+
+      {/* Dashboard */}
       <div
         className="dashboard"
         onClick={onDashboard}
@@ -98,7 +100,29 @@ export const NavBar = () => {
           className="dashboard-content"
           onClick={(e) => e.stopPropagation()}
           style={{ left: isShowDashboard ? "0px" : "-1000px" }}
-        ></div>
+        >
+          <NavLink
+            onClick={onDashboard}
+            className={`nav-items ${
+              location.pathname === "/" ? "text-white" : "text-gray-400"
+            }`}
+            to={"/"}
+          >
+            Peliculas
+          </NavLink>
+
+          <NavLink
+            onClick={onDashboard}
+            className={`nav-items ${
+              location.pathname === "/series" ? "text-white" : "text-gray-400"
+            }`}
+            to={"/series"}
+          >
+            Series
+          </NavLink>
+
+          <p onClick={onLogout}>Cerrar sesión</p>
+        </div>
       </div>
     </>
   );

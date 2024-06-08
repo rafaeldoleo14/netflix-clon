@@ -70,17 +70,32 @@ nav .logo {
     height: 100vh;
     z-index: 15000;
     top: 68px;
-    right: 1000px;
-    transition: all 0.3s ease;
+    transition: all 0s ease;
   }
 
   .dashboard .dashboard-content {
-    position: relative;
-    left: -1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    position: absolute;
     background-color: black;
     width: 60%;
     height: 100%;
-    transition: all 0.3s ease;
+    left: -1000px;
+    padding-left: 15px;
+    transition: all 0.33s ease;
+    gap: 10px;
+  }
+
+  .dashboard .dashboard-content .nav-items {
+    display: flex;
+  }
+
+  .dashboard .dashboard-content p {
+    position: relative;
+    top: 72%;
+    color: white;
   }
 }
 

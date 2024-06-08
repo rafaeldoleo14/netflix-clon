@@ -22,6 +22,8 @@ export const Main = ({ requests }) => {
     <>
       <div className="main-container">
         <img
+          loading="lazy"
+          onLoad={() => console.log("cargo!!!")}
           src={`https://image.tmdb.org/t/p/original${
             movie?.backdrop_path || movie?.poster_path
           }`}
